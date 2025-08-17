@@ -196,7 +196,7 @@ for i in range(len(a)):
 print(f"maximum product of the subarrays is {maxi} ")
 
 
-13)optimal
+13)maximum product subarray(optimal)
 
 import sys
 a=list(map(int,input().split()))
@@ -221,7 +221,7 @@ print(maxi)
 bruteforce is by generating all subarrays and finding the ones which have the sum as 0 and finding their length
 
 
-15)optimal (prefix sum + hashmap approach)
+15)longest subarray with sum 0 - optimal (prefix sum + hashmap approach)
 
 import sys
 a=list(map(int,input().split()))
@@ -247,7 +247,7 @@ for i in range(len(a)):
                         count+=1
 print(count)
 
-17)optimal approach(using merge sort)
+17)count inversions - optimal approach(using merge sort)
 
 def merge(a,low,mid,high):
     m=mid-low+1
@@ -304,7 +304,7 @@ for i in range(len(a)):
 print(f"no of reverse pairs are {cnt}")
 
 
-19)optimal (merge sort based approach)
+19)reverse pairs - optimal (merge sort based approach)
 
 count=0
 def merge(a,low,mid,high):

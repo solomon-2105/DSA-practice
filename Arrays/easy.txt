@@ -1,4 +1,5 @@
 1)Maximum Value Finder
+
 a=list(map(int,input().split()))
 maxi=float('-inf')
 for i in a:
@@ -8,6 +9,7 @@ print("The maximum value is:", maxi)
 
 
 2)second maximum value
+
 a=list(map(int, input().split()))
 fmax,smax=float('-inf'),float('-inf')
 for i in a:
@@ -20,6 +22,7 @@ print("The second maximum value is:", smax) if smax != float('-inf') else print(
 
 
 3)third maximum value
+
 a=list(map(int,input().split()))
 fmax,smax,tmax=float('-inf'),float('-inf'),float('-inf')
 for i in a:
@@ -36,6 +39,7 @@ print("The third maximum value is:", tmax) if tmax != float('-inf') else print("
 
 
 4)check if the array is sorted
+
 a=list(map(int,input().split()))
 brr,crr=0,0
 for i in range(len(a)-1):
@@ -50,6 +54,7 @@ else:
 
 
 5)remove duplicates from a sorted array
+
 a=list(map(int,input().split()))
 i=0
 for j in range(len(a)):
@@ -62,6 +67,7 @@ for j in range(i+1):
 
 
 6)left rotate an array by d positions
+
 def left_rotate(left,r):
     while left<=r:
         a[left],a[r]=a[r],a[left]
@@ -80,6 +86,7 @@ for i in a:
 
 
 7)move zeroes to the end
+
 a=list(map(int,input().split()))
 i=0
 for j in range(len(a)):
@@ -92,6 +99,7 @@ for j in range(len(a)):
 
 
 8)linear search
+
 a=list(map(int,input().split()))
 key=int(input("Enter the element to search: "))
 found,i=False,0
@@ -109,6 +117,7 @@ else:
 
 
 9)find the union
+
 a=list(map(int,input().split()))
 b=list(map(int,input().split()))
 i,j,x,y=0,0,len(a),len(b)
@@ -138,6 +147,7 @@ for k in union:
 
 
 10)intersection of two arrays
+
 a=list(map(int,input().split()))
 b=list(map(int,input().split()))
 i,j,x,y=0,0,len(a),len(b)
@@ -158,6 +168,7 @@ for k in intersection:
 
 
 11)find missing number in an array
+
 a=[1,2,3,4,5,6,7,9,10]
 brr=0
 for i in a:
@@ -168,6 +179,7 @@ print("The missing number is:", brr)
 
 
 12)maximum consecutive ones
+
 a=list(map(int,input().split()))
 maxi,count=0,0
 for i in a:
@@ -180,6 +192,7 @@ print("The maximum number of consecutive ones is:", maxi)
 
 
 13)Find the number that appears once, and other numbers twice
+
 a=list(map(int,input().split()))
 brr=0
 for i in a:
@@ -188,6 +201,7 @@ print("The number that appears once is:", brr)
 
 
 14)Longest subarray with given sum K(positives and negatives and zeroes)
+
 a=list(map(int,input().split()))
 k=int(input("Enter the sum K: "))
 brr={}
@@ -204,6 +218,7 @@ print("The length of the longest subarray with sum K is:", maxi)
 
 
 15)Longest subarray with given sum K(only positives)
+
 a=list(map(int,input().split()))
 k=int(input("Enter the sum K: "))
 i,j=0,0
