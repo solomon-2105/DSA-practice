@@ -24,7 +24,7 @@ class LinkedList:
         #if list ain't empty bitch
         cnt=1
         current=self.head
-        while current is not None and cnt<pos-1: #we stop 2 places before the actual position
+        while current is not None and cnt<pos-1: #we stop 1 place before the actual position
             cnt+=1
             current=current.next
         if current is None:
