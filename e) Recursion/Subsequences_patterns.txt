@@ -1,0 +1,143 @@
+1)printing all the subsets of an array using recursion
+
+def brr(a,i,b,c):
+    if i==len(a):
+        c.append(b.copy())
+        return
+    b.append(a[i])
+    brr(a,i+1,b,c)
+    b.pop()
+    brr(a,i+1,b,c)
+
+a=[1,2,3]
+b=[]
+c=[]
+brr(a,0,b,c)
+c.sort()
+print(*c,sep="\n")
+        
+
+2)printing the subsets of an array whose sum is equal to a given number using recursion
+
+def brr(a,i,b,k):
+    if i==len(a):
+        if sum(b)==k:
+            print(*b)
+        return
+    b.append(a[i])
+    brr(a,i+1,b,k)
+    b.pop()
+    brr(a,i+1,b,k)
+
+a=[1,2,3,4,7]
+b=[]
+k=7
+brr(a,0,b,k)
+
+
+3)printing only a single subset whose sum is k
+
+def brr(a,i,b,k):
+    if i==len(a):
+        if sum(b)==k:
+            print(*b)
+            return True
+        return False
+    b.append(a[i])
+    if brr(a,i+1,b,k): return True
+    b.pop()
+    if brr(a,i+1,b,k): return True
+    return False
+
+a=[1,2,3,4]
+b=[]
+k=7
+brr(a,0,b,k)
+
+4)count the no of subsequences with sum k
+(using list to store the elements of the subset)
+
+def brr(a,i,b,k,c):
+    if i==len(a):
+        if sum(b)==k:
+            print(*b)
+            c[0]+=1
+        return
+    b.append(a[i])
+    brr(a,i+1,b,k,c)
+    b.pop()
+    brr(a,i+1,b,k,c)
+    
+a=[1,2,3,4,5,6]
+b=[]
+k=10
+c=[0]
+print(f'subsets with sum {k} are ')
+brr(a,0,b,k,c)
+print(f"no of subsets with sum {k} is {c[0]}")
+
+
+5)count the no of subsequences with sum k
+(without using list to store the elements of the subset)
+
+def brr(a,i,b,k):
+    if i==len(a):
+        if sum(b)==k:
+            print(*b)
+            return 1
+        return 0
+    b.append(a[i])
+    brrr=brr(a,i+1,b,k)
+    b.pop()
+    grrr=brr(a,i+1,b,k)
+    return brrr+grrr
+    
+a=[1,2,3,4,5,6]
+b=[]
+k=10
+print(f'subsets with sum {k} are ')
+d=brr(a,0,b,k)
+print(f"no of subsets with sum {k} is {d}")
+
+
+6)combination sum I
+
+def brr(a,i,b,k):
+    if i==len(a):
+        if k==0:
+            print(*b)
+        return
+    if a[i]<=k:
+        b.append(a[i])
+        brr(a,i,b,k-a[i])
+        b.pop()
+    brr(a,i+1,b,k)
+    
+a=[1,2,3]
+b=[]
+k=10
+print(f'subsets with sum {k} are ')
+brr(a,0,b,k)
+
+
+7) combination sum II
+
+class Solution:
+    def combinationSum2(self, a: List[int], t: int) -> List[List[int]]:
+        a.sort()
+        b,c=[],[]
+        self.brr(a,0,b,t,c)
+        return c
+    
+    def brr(self,a,i,b,k,c):
+        if i==len(a):
+            if k==0:
+                c.append(b.copy())
+            return
+        if a[i]<=k:
+            b.append(a[i])
+            self.brr(a,i+1,b,k-a[i],c)
+            b.pop()
+        while i+1<len(a) and a[i]==a[i+1]:
+            i+=1
+        self.brr(a,i+1,b,k,c)
