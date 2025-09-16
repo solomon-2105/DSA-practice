@@ -141,3 +141,69 @@ class Solution:
         while i+1<len(a) and a[i]==a[i+1]:
             i+=1
         self.brr(a,i+1,b,k,c)
+
+
+8) Subset Sums I
+
+class Solution:
+    def subsetSums(self, arr):
+        c = []
+        self.solveSums(arr, 0, 0, c)
+        c.sort()
+        return c
+
+    def solveSums(self, arr, i, current_sum, c):
+        if i == len(arr):
+            c.append(current_sum)
+            return
+        self.solveSums(arr, i + 1, current_sum + arr[i], c)
+        self.solveSums(arr, i + 1, current_sum, c)
+
+
+9) Subset Sums II
+
+class Solution:
+    def printUniqueSubset(self, nums):
+        nums.sort()
+        res = []
+        self._backtrack(nums, 0, [], res)
+        return res
+
+    def _backtrack(self, nums, index, path, res):
+        res.append(path.copy())
+        for i in range(index, len(nums)):
+            if i > index and nums[i] == nums[i - 1]:
+                continue
+            path.append(nums[i])
+            self._backtrack(nums, i + 1, path, res)
+            path.pop()
+
+
+10) Permutations 
+
+class Solution:
+    def permute(self, nums):
+        result = []
+        used = [False] * len(nums)
+        def backtrack(current):
+            if len(current) == len(nums):
+                result.append(current[:])  # Make a copy
+                return
+            for i in range(len(nums)):
+                if not used[i]:
+                    used[i] = True
+                    current.append(nums[i])
+                    backtrack(current)
+                    current.pop()       # Undo the choice
+                    used[i] = False     # Mark as unused again
+        backtrack([])
+        return result
+
+11) 
+
+
+
+
+
+
+
