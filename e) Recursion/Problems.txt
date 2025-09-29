@@ -1,0 +1,72 @@
+1) Reverse a Stack:
+
+class Solution:
+    def reverseStack(self, st):
+        if not st:
+            return 
+        top=st.pop()
+        self.reverseStack(st)
+        self.insertBottom(st,top)
+        
+    def insertBottom(self,st,b):
+        if not st:
+            st.append(b)
+            return
+        brr=st.pop()
+        self.insertBottom(st,b)
+        st.append(brr)
+
+
+2) Tower of Hanoi:
+
+class Solution:
+    def  towerOfHanoi(self, n, fromm, to, aux):
+        # code here
+        if n==1: return 1
+        c=0
+        c+=self.towerOfHanoi(n-1,fromm,aux,to)
+        c+=1
+        c+=self.towerOfHanoi(n-1,aux,to,fromm)
+        return c
+
+
+3) Rats in a maze:
+
+class Solution:
+    def ratInMaze(self, maze):
+        # code here
+        res=[]
+        if len(maze)==0 or maze[0][0]==0 or maze[len(maze)-1][len(maze)-1]==0:
+            return res
+        self.solve(0,0,maze,"",res)
+        return sorted(res)
+    
+    def solve(self,i,j,maze,path,res):
+        n=len(maze)
+        if i<0 or i>=n or j<0 or j>=n or maze[i][j]==0:
+            return
+        if i==n-1 and j==n-1:
+            res.append(path)
+            return
+        maze[i][j]=0
+        self.solve(i+1,j,maze,path+"D",res)
+        self.solve(i-1,j,maze,path+"U",res)
+        self.solve(i,j+1,maze,path+"R",res)
+        self.solve(i,j-1,maze,path+"L",res)
+        maze[i][j]=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
