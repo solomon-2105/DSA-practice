@@ -23,34 +23,36 @@ print("The second maximum value is:", smax) if smax != float('-inf') else print(
 
 3)third maximum value
 
-a=list(map(int,input().split()))
-fmax,smax,tmax=float('-inf'),float('-inf'),float('-inf')
-for i in a:
-    if i>fmax:
-        tmax=smax
-        smax=fmax
-        fmax=i
-    elif i>smax and i<fmax:
-        tmax=smax
-        smax=i
-    elif i>tmax and i<smax:
-        tmax=i
-print("The third maximum value is:", tmax) if tmax != float('-inf') else print("No third maximum value found")
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        fmax,smax,tmax=float('-inf'),float('-inf'),float('-inf')
+        for i in nums:
+            if i==fmax or i==tmax or i==smax: continue
+            if i>fmax:
+                tmax=smax
+                smax=fmax
+                fmax=i
+            elif i>smax and i<fmax:
+                tmax=smax
+                smax=i
+            elif i>tmax:
+                tmax=i
+        return tmax if tmax!=float('-inf') else fmax
 
 
 4)check if the array is sorted
 
 a=list(map(int,input().split()))
-brr,crr=0,0
+brr,crr=True,True
 for i in range(len(a)-1):
-    if a[i]<=a[i+1]:
-        brr+=1
-    else:
-        crr+=1
-if (crr==0 and brr!=0) or (brr==0 and crr!=0):
-    print("The array is sorted")
+	if a[i]<=a[i+1]:
+		brr=False
+	else:
+		crr=False
+if brr or crr:
+	print("Array is sorted")
 else:
-    print("The array is not sorted")
+	print("Array isn't sorted")
 
 
 5)remove duplicates from a sorted array
@@ -83,6 +85,26 @@ left_rotate(n-d,n-1)
 print("Array after left rotation by", d, "positions:")
 for i in a:
     print(i, end=" ")
+
+
+** Right rotate an array by d positions
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        a=len(nums)-1
+        k%=a+1
+        self.reverse(nums,0,a)
+        self.reverse(nums,0,k-1)
+        self.reverse(nums,k,a)
+        
+    def reverse(self,nums,i,j):
+        while i<j:
+            nums[i],nums[j]=nums[j],nums[i]
+            i+=1
+            j-=1
 
 
 7)move zeroes to the end
