@@ -1,4 +1,4 @@
-1) Reverse a Stack:
+ 1) Reverse a Stack:
 
 class Solution:
     def reverseStack(self, st):
@@ -17,20 +17,39 @@ class Solution:
         st.append(brr)
 
 
-2) Tower of Hanoi:
+2) Sort a Stack:
+
+class Solution:
+    def sortStack(self, st):
+        if len(st)==0:
+            return
+        top=st.pop()
+        self.sortStack(st)
+        self.sorts(st,top)
+        
+    def sorts(self,st,top):
+        if not st or st[-1]<=top:
+            st.append(top)
+            return
+        br=st.pop()
+        self.sorts(st,top)
+        st.append(br)
+
+
+3) Tower of Hanoi:
 
 class Solution:
     def  towerOfHanoi(self, n, fromm, to, aux):
         # code here
         if n==1: return 1
         c=0
-        c+=self.towerOfHanoi(n-1,fromm,aux,to)
+        c+=self.towerOfHanoi(n-1,fromm,aux,  )
         c+=1
         c+=self.towerOfHanoi(n-1,aux,to,fromm)
         return c
 
 
-3) Rats in a maze:
+4) Rats in a maze:
 
 class Solution:
     def ratInMaze(self, maze):

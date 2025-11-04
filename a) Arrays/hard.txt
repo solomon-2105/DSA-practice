@@ -408,6 +408,49 @@ class Solution:
         return [A,B]
 
 
+23) Find X-Sum of All K-Long Subarrays I
+
+class Solution:
+    def findXSum(self, nums: List[int], k: int, x: int) -> List[int]:
+        a=[]
+        for i in range(len(nums)-k+1):
+            j=i+k-1
+            c=self.x_sum(nums,i,j,x)
+            a.append(c)
+        return a
+
+    def x_sum(self,nums,i,j,x):
+        brr={}
+        for p in nums[i:j+1]:
+            brr[p]=brr.get(p,0)+1
+        brr=dict(sorted(brr.items(),key=lambda g:(g[1],g[0]),reverse=True))
+        cn=0
+        summ=0
+        for k,v in brr.items():
+            if cn==x:
+                break
+            summ+=k*v
+            cn+=1
+        return summ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

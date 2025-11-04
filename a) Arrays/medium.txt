@@ -319,3 +319,96 @@ for i in a:
     else:
         brr[presum]=1
 print(cnt)
+
+
+18) Average waiting time
+
+class Solution:
+    def averageWaitingTime(self, customers: List[List[int]]) -> float:
+        n=len(customers)
+        wait_time=current_time=0
+        for arrival,cook in customers:
+            current_time=max(current_time,arrival)+cook
+            wait_time+=current_time-arrival
+        return wait_time/n
+
+
+19) Find all the duplicates in the array
+
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        a=[]
+        for i in range(len(nums)):
+            idx=abs(nums[i])-1
+            if nums[idx]<0:
+                a.append(idx+1)
+            else:
+                nums[idx]*=-1
+        return a
+
+
+20) Count Unguarded cells in the grid
+
+class Solution:
+    def countUnguarded(self, m: int, n: int, guards: List[List[int]], walls: List[List[int]]) -> int:
+        walls_set={(x, y)for x,y in walls}
+        guards_set={(x, y)for x,y in guards}
+        matrix=[[0 for _ in range(n)]for _ in range(m)]
+        for x,y in walls_set:
+            matrix[x][y]='W'
+        for x,y in guards_set:
+            matrix[x][y]='G'
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]=='G':
+                    self.checkLeft(matrix,i,j)
+                    self.checkRight(matrix,i,j,n)
+                    self.checkUp(matrix,i,j)
+                    self.checkDown(matrix,i,j,m)
+        count=0
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]==0: count+=1
+        return count
+
+    
+    def checkLeft(self,matrix,i,j):
+        for k in range(j-1,-1,-1):
+            if matrix[i][k]=='W' or matrix[i][k]=='G':
+                return
+            else:
+                matrix[i][k]=-1
+        return
+
+
+    def checkRight(self,matrix,i,j,n):
+        for k in range(j+1,n):
+            if matrix[i][k]=='W' or matrix[i][k]=='G':
+                return
+            else:
+                matrix[i][k]=-1
+        return
+
+    def checkUp(self,matrix,i,j):
+        for k in range(i-1,-1,-1):
+            if matrix[k][j]=='W' or matrix[k][j]=='G':
+                return
+            else:
+                matrix[k][j]=-1
+        return
+
+    def checkDown(self,matrix,i,j,m):
+        for k in range(i+1,m):
+            if matrix[k][j]=='W' or matrix[k][j]=='G':
+                return
+            else:
+                matrix[k][j]=-1
+        return
+
+
+
+
+
+
+
+
